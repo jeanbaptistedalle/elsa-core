@@ -155,7 +155,7 @@ public class WorkflowRuntimeFeature : FeatureBase
             // Core.
             .AddScoped<ITriggerIndexer, TriggerIndexer>()
             .AddScoped<IWorkflowInstanceFactory, WorkflowInstanceFactory>()
-            .AddScoped<IWorkflowHostFactory, WorkflowHostFactory>()
+            .AddSingleton<IWorkflowHostFactory, WorkflowHostFactory>()
             .AddScoped<IBackgroundActivityInvoker, DefaultBackgroundActivityInvoker>()
             .AddScoped(WorkflowRuntime)
             .AddScoped(WorkflowDispatcher)
@@ -175,7 +175,6 @@ public class WorkflowRuntimeFeature : FeatureBase
             .AddScoped<ITaskReporter, TaskReporter>()
             .AddScoped<SynchronousTaskDispatcher>()
             .AddScoped<BackgroundTaskDispatcher>()
-            .AddScoped<DispatchWorkflowRequestHandler>()
             .AddScoped<IEventPublisher, EventPublisher>()
             .AddScoped<IWorkflowInbox, DefaultWorkflowInbox>()
             .AddScoped<IBookmarkUpdater, BookmarkUpdater>()

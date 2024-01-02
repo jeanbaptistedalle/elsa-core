@@ -119,16 +119,16 @@ public class ProtoActorFeature : FeatureBase
         Log.SetLoggerFactory(LoggerFactory.Create(l => l.AddConsole().SetMinimumLevel(LogLevel.Warning)));
 
         // Persistence.
-        services.AddScoped(PersistenceProvider);
+        services.AddTransient(PersistenceProvider);
 
         // Mappers.
         services
             .AddScoped<BookmarkMapper>()
-            .AddScoped<ExceptionMapper>()
+            .AddSingleton<ExceptionMapper>()
             .AddScoped<WorkflowExecutionResultMapper>()
-            .AddScoped<ActivityIncidentStateMapper>()
-            .AddScoped<WorkflowStatusMapper>()
-            .AddScoped<WorkflowSubStatusMapper>();
+            .AddSingleton<ActivityIncidentStateMapper>()
+            .AddSingleton<WorkflowStatusMapper>()
+            .AddSingleton<WorkflowSubStatusMapper>();
 
         // Mediator handlers.
         services.AddHandlersFrom<ProtoActorFeature>();

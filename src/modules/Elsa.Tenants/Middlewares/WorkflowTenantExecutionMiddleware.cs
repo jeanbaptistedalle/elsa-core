@@ -10,12 +10,12 @@ namespace Elsa.Tenants.Middlewares;
 /// <summary>
 /// Middleware that loads and save workflow's tenant into ITenantAccessor. 
 /// </summary>
-public class WorkflowContextTenantExecutionMiddleware : WorkflowExecutionMiddleware
+public class WorkflowTenantExecutionMiddleware : WorkflowExecutionMiddleware
 {
     private readonly IServiceScopeFactory _serviceScopeFactory;
 
     /// <inheritdoc />
-    public WorkflowContextTenantExecutionMiddleware(WorkflowMiddlewareDelegate next, IServiceScopeFactory serviceScopeFactory) : base(next)
+    public WorkflowTenantExecutionMiddleware(WorkflowMiddlewareDelegate next, IServiceScopeFactory serviceScopeFactory) : base(next)
     {
         _serviceScopeFactory = serviceScopeFactory;
     }
